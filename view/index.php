@@ -48,39 +48,36 @@ $modeloCliente = new Cliente($pdo);
                 <?php
                   escribirRegistros($modeloCliente->obtenerTodos());
                 ?>
+                <tr>
+                    <form action="../controller/crudCliente.php" method="post">
+                        <th>
+                            <select name="id">
+                                <?php
+                                foreach ($modeloCliente->obtenerTodos() as $cliente) {
+                                    echo "<option value='" . $cliente['id_cliente'] . "'>" . $cliente['id_cliente'] . " - " . $cliente['alias'] . "</option>";
+                                }
+                            ?>
+                            </select>
+                        </th>
+                        <th>
+                            <input type="text" name="nombre">
+                        </th>
+                        <th>
+                            <input type="text" name="alias">
+                        </th>
+                        <th>
+                            <button type="submit" name="insertar-cliente">Añadir</button>
+                        </th>
+                        <th>
+                            <button type="submit" name="modificar-cliente">Modificar</button>
+                        </th>
+                        <th>
+                            <button type="submit" name="eliminar-cliente">Eliminar</button>
+                        </th>
+                    </form>
+                </tr>
             </tbody>
-
         </table>
-        <br>
-        <form action="../controller/crudCliente.php" method="post">
-
-            <div>
-                <label for="">Id Cliente</label>
-                <select name="id">
-                    <?php
-                        foreach ($modeloCliente->obtenerTodos() as $cliente) {
-                            echo "<option value='" . $cliente['id_cliente'] . "'>" . $cliente['id_cliente'] . " - " . $cliente['alias'] . "</option>";
-                        }
-                    ?>
-                </select>
-            </div>
-            <div>
-                <label for="">Nombre</label>
-                <input type="text" name="nombre">
-            </div>
-            <div>
-                <label for="">Alias</label>
-                <input type="text" name="alias">
-            </div>
-
-
-
-            <button type="submit" name="insertar-cliente">Añadir</button>
-            <button type="submit" name="modificar-cliente">Modificar</button>
-            <button type="submit" name="eliminar-cliente">Eliminar</button>
-
-        </form>
-
     </div>
     <div>
         <h3>REGISTRO DE TAREAS</h3>
@@ -101,9 +98,64 @@ $modeloCliente = new Cliente($pdo);
             <tbody>
                 <?php
                   escribirRegistros($modeloTarea->obtenerTodas());
-                ?>
+                  ?>
+                <tr>
+                    <form action="../controller/crudTarea.php" method="post">
+                        <th>
+                            <select name="id">
+                                <?php
+                                    foreach ($modeloTarea->obtenerTodas() as $tarea) {
+                                        echo "<option value='" . $tarea['id_tarea'] . "'>" . $tarea['id_tarea'] . "</option>";
+                                    }
+                                ?>
+                            </select>
+                        </th>
+                        <th>
+                            <input type="date" name="fecha_peticion">
+                        </th>
+                        <th>
+                            <input type="time" name="hora_peticion">
+                        </th>
+                        <th>
+                            <select name="id_cliente">
+                                <?php
+                                    foreach ($modeloCliente->obtenerTodos() as $cliente) {
+                                        echo "<option value='" . $cliente['id_cliente'] . "'>" . $cliente['id_cliente'] . " - " . $cliente['alias'] . "</option>";
+                                    }
+                                ?>
+                            </select>
+                        </th>
+                        <th>
+                            <input type="text" name="tarea">
+                        </th>
+                        <th>
+                            <input type="Number" name="estado">
+                        </th>
+                        <th>
+                            <input type="Number" name="prioridad">
+                        </th>
+                        <th>
+                            <input type="date" name="fecha_finalizacion">
+                        </th>
+                        <th>
+                            <input type="Text" name="persona_peticion">
+                        </th>
+                        <th>
+                            <button type="submit" name="insertar-tarea">Añadir</button>
+                        </th>
+                        <th>
+                            <button type="submit" name="modificar-tarea">Modificar</button>
+                        </th>
+                        <th>
+                            <button type="submit" name="eliminar-tarea">Eliminar</button>
+                        </th>
+                    </form>
+                </tr>
             </tbody>
         </table>
+
+
+
     </div>
 
 </body>
