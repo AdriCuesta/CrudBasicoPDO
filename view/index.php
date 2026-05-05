@@ -35,7 +35,7 @@ $modeloCliente = new Cliente($pdo);
 <body>
 
     <div>
-        <h3>REGISTRO DE USUARIOS</h3>
+        <h3>REGISTRO DE CLIENTES</h3>
         <table class="table">
             <thead>
                 <tr>
@@ -102,7 +102,7 @@ $modeloCliente = new Cliente($pdo);
                 <tr>
                     <form action="../controller/crudTarea.php" method="post">
                         <th>
-                            <select name="id">
+                            <select name="id_tarea">
                                 <?php
                                     foreach ($modeloTarea->obtenerTodas() as $tarea) {
                                         echo "<option value='" . $tarea['id_tarea'] . "'>" . $tarea['id_tarea'] . "</option>";
