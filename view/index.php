@@ -51,15 +51,15 @@ $modeloCliente = new Cliente($pdo);
             </tbody>
 
         </table>
-
-        <form action="" method="post">
+        <br>
+        <form action="../controller/crudCliente.php" method="post">
 
             <div>
                 <label for="">Id Cliente</label>
-                <select name="ids">
+                <select name="id">
                     <?php
                         foreach ($modeloCliente->obtenerTodos() as $cliente) {
-                            echo "<option value='" . $cliente['id_cliente'] . "'>" . $cliente['id_cliente'] . " - " . $cliente['nombre'] . "</option>";
+                            echo "<option value='" . $cliente['id_cliente'] . "'>" . $cliente['id_cliente'] . " - " . $cliente['alias'] . "</option>";
                         }
                     ?>
                 </select>
@@ -72,8 +72,12 @@ $modeloCliente = new Cliente($pdo);
                 <label for="">Alias</label>
                 <input type="text" name="alias">
             </div>
+
+
+
             <button type="submit" name="insertar-cliente">Añadir</button>
             <button type="submit" name="modificar-cliente">Modificar</button>
+            <button type="submit" name="eliminar-cliente">Eliminar</button>
 
         </form>
 
